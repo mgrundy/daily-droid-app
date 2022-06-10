@@ -8,38 +8,42 @@
     android:background="@color/colorPrimary"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/remote_video_view_container"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/remote_camera_mask_view"
+        <FrameLayout
+            android:id="@+id/remote_video_view_container_3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center|center_vertical"
-            android:text="@string/join_meeting_instructions" />
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            tools:visibility="visible">
 
-    <FrameLayout
-        android:id="@+id/local_video_view_container"
-        android:layout_width="160dp"
-        android:layout_height="240dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="false"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp" >
+        </FrameLayout>
 
-        <TextView
-            android:id="@+id/local_camera_mask_view"
+        <FrameLayout
+            android:id="@+id/remote_video_view_container_2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorDisabled"
-            android:gravity="center|center_vertical"
-            android:text="@string/local_camera"
-            android:visibility="visible" />
-    </FrameLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            tools:visibility="visible">
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/remote_video_view_container_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:visibility="visible"
+            tools:visibility="visible"></FrameLayout>
+    </LinearLayout>
 
     <LinearLayout
         style="?android:attr/buttonBarStyle"
@@ -57,7 +61,6 @@
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:layout_gravity="end"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/round_outline"
             android:orientation="horizontal">
 
@@ -66,85 +69,46 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1" />
 
-            <TextView
-                android:id="@+id/inputs"
-                android:layout_width="wrap_content"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="@string/inputs" />
+                android:layout_weight="1">
 
-            <ImageButton
-                android:id="@+id/input_mic_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorDisabled"
-                android:contentDescription="@string/input_mic"
-                app:srcCompat="@android:drawable/ic_menu_call" />
+                <TextView
+                    android:id="@+id/participantCountView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:gravity="center"
+                    android:maxWidth="280dp"
+                    android:maxLines="1"
+                    android:minWidth="280dp"
+                    android:textColorHint="#000000"
+                    android:textSize="18sp"
+                    android:layout_weight="1"
+                    android:enabled="false"
+                    android:text="0 participants in room"
+                    app:layout_constraintEnd_toEndOf="@+id/aurl"
+                    app:layout_constraintStart_toStartOf="@+id/aurl"
+                    tools:visibility="invisible" />
 
-            <ImageButton
-                android:id="@+id/input_camera_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:backgroundTint="@color/colorDisabled"
-                android:contentDescription="@string/input_camera"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
-
-            <TextView
-                android:id="@+id/publish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:text="@string/publish" />
-
-            <ImageButton
-                android:id="@+id/publish_mic_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorDisabled"
-                android:contentDescription="@string/publish_mic"
-                app:srcCompat="@android:drawable/ic_menu_call" />
-
-            <ImageButton
-                android:id="@+id/publish_camera_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:backgroundTint="@color/colorDisabled"
-                android:contentDescription="@string/publish_camera"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_gravity="end"
-            android:background="@drawable/round_outline"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <EditText
-                android:id="@+id/aurl"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="start"
-                android:layout_marginStart="10dp"
-                android:autofillHints=""
-                android:gravity="center"
-                android:hint="@string/tap_to_enter_room_url"
-                android:inputType="textUri"
-                android:maxWidth="280dp"
-                android:maxLines="1"
-                android:minWidth="280dp"
-                android:textColorHint="#546E7A"
-                android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/aurl"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    android:autofillHints=""
+                    android:gravity="center"
+                    android:hint="@string/tap_to_enter_room_url"
+                    android:inputType="textUri"
+                    android:maxWidth="280dp"
+                    android:maxLines="1"
+                    android:minWidth="280dp"
+                    android:textColorHint="#546E7A"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"

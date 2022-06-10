@@ -12,5 +12,5 @@
     <string name="local_camera">Local Camera</string>
     <string name="no_one_else_in_meeting">No one else is in the meeting</string>
     <string name="join_meeting_instructions">Enter the room URL and click JOIN!</string>
-    <string name="amount_of_participants_at_meeting">There is %d other participants on this meeting</string>
+    <string name="amount_of_participants_at_meeting">%d participants are in the room</string>
 </resources>
